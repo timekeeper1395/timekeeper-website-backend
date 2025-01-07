@@ -1,14 +1,32 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
 
 const app = express();
 
 // Middleware
-app.use(cors());
+const cors = require("cors");
+
+// Allow specific frontend origin
+const allowedOrigins = ["https://timekeeper-website-frontend.onrender.com"];
+
+// Configure CORS options
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Allow cookies or Authorization headers
+};
+
+// Use CORS middleware
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "public")));
