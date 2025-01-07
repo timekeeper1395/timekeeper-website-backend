@@ -26,7 +26,7 @@ router.post("/checkout", async (req, res) => {
       ],
       mode: "payment",
       success_url: "https://timekeeper-website-frontend.onrender.com", // Replace with your success page URL
-      cancel_url: "https://timekeeper-website-frontend.onrender.com/frontend/pages/cart.html", // Replace with your cart page URL
+      cancel_url: "https://timekeeper-website-frontend.onrender.com/pages/cart.html", // Replace with your cart page URL
     });
 
     // Save the transaction to MongoDB
