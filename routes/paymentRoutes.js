@@ -19,14 +19,14 @@ router.post("/checkout", async (req, res) => {
             product_data: {
               name: "Your Cart Total", // You can customize this
             },
-            unit_amount: amount,
+            unit_amount:amount*100,
           },
           quantity: 1,
         },
       ],
       mode: "payment",
-      success_url: "https://timekeeper-website-backend.onrender.com/frontend/index.html", // Replace with your success page URL
-      cancel_url: "https://timekeeper-website-backend.onrender.com/frontend/pages/cart.html", // Replace with your cart page URL
+      success_url: "https://timekeeper-website-frontend.onrender.com/frontend/index.html", // Replace with your success page URL
+      cancel_url: "https://timekeeper-website-frontend.onrender.com/frontend/pages/cart.html", // Replace with your cart page URL
     });
 
     // Save the transaction to MongoDB
